@@ -12,6 +12,9 @@ def detect_emotion():
     text_to_analyze = request.args.get("textToAnalyze")
     emotion_response = emotion_detector(text_to_analyze)
 
+    if emotion_response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!."
+
     emotion_keys = ("anger", "disgust", "fear", "joy", "sadness")
 
     emotion_key_values = []
